@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript - Learning | Bind</title>
+</head>
+<body>
+	<h3>Bind Functionality in Javascript (Bind, Call, Apply)</h3>
+	<p>Here, you can see the simple example that describes the working of bind, call functions.</p>
+	<ul>
+		<li>Bind - updates the reference</li>
+		<li>Call - updates and also let's you pass arguments as comma seperated variables</li>
+		<li>Apply - updates and also let's you pass arguments as array</li>
+	</ul>
+	<p>This updates the original reference with the reference supplied.<p>
+	<p>For ex. By default, the reference to 'this' will always be the reference that invoked a particular function. If a function is called on global scope, the reference usually is 'window'. If a function is called on click of any event, the reference usually is the Event object</p>
+	
+	<p>You can go ahead and change the reference by using the following approaches</p>
+	
+	<pre>
+	//Code
+	function getDetails (name, age, location) {
+		console.log(this.name, this.age, this.location );
+	}
+	
+	var arun = {
+		name: 'Arunkumar',
+		age: 25,
+		location: 'India'
+	};
+	
+	var kumar = {
+		name: 'Kumar',
+		age: 26,
+		location: 'Somewhere in India'
+	};
+	
+	getDetails.call(arun); //Returns Arunkumar 25 India
+	getDetails.call(kumar); //Returns Kumar 26 Somewhere in India
+	
+	getDetails.bind(arun).call(); //Returns Arunkumar 25 India
+	getDetails.bind(kumar).call(); //Returns Kumar 26 Somewhere in India
+	
+	getDetails(); //Returns undefined undefined and location of the window(object)
+	</pre>
+	
+	<script type="text/javascript">
+	
+	function getDetails (name, age, location) {
+		console.log(this.name, this.age, this.location );
+	}
+	
+	var arun = {
+		name: 'Arunkumar',
+		age: 25,
+		location: 'India'
+	};
+	
+	var kumar = {
+		name: 'Kumar',
+		age: 26,
+		location: 'Somewhere in India'
+	};
+	
+	getDetails.call(arun); //Returns Arunkumar 25 India
+	getDetails.call(kumar); //Returns Kumar 26 Somewhere in India
+	
+	getDetails.bind(arun).call(); //Returns Arunkumar 25 India
+	getDetails.bind(kumar).call(); //Returns Kumar 26 Somewhere in India
+	
+	getDetails(); //Returns undefined undefined and location of the window(object)
+	
+	</script>
+</body>
+</html>

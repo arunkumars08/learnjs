@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript - Learning | Inheritance</title>
+</head>
+<body>
+	<h3>Inheritance Functionality in Javascript (Prototypal, Classical)</h3>
+	<p>Until ECMAScript 5, there is no straightforward way to implement inheritance as in other programming languages. From ECMAScript 6, the paradigm has been changed with the introduction of classes, interfaces, extensions.</p>
+	
+	<p>Here, you can see the simple example that describes the inheritance in javascript in EC5</p>
+	
+	<pre>
+		//Code
+	function Animal(name) {
+		this.name = name;
+	}
+	
+	Animal.prototype.setName = function (name) {
+		this.name = name;
+	}
+		
+	Animal.prototype.getName = function () {
+		return this.name + ':' + this.type;
+	}
+	
+	function Cat (name) {
+		Animal.prototype.setName.call(this, name);
+		this.type = "Domestic";
+	}
+	Cat.prototype = new Animal;
+	Cat.prototype.constructor = Animal;
+	
+	function Dog(name) {
+		Animal.prototype.setName.call(this, name);
+		this.type = 'Barking Domestic';
+	}
+	
+	Dog.prototype = new Animal;
+	Dog.prototype.constructor = Animal;
+	
+	
+	
+	var c = new Cat('Name of the cat');
+	var d = new Dog('Dog Name');
+	
+	console.log(c.getName());
+	console.log(d.getName());
+	</pre>
+	<script type="text/javascript">
+	
+	function Animal(name) {
+		this.name = name;
+	}
+	
+	Animal.prototype.setName = function (name) {
+		this.name = name;
+	}
+		
+	Animal.prototype.getName = function () {
+		return this.name + ':' + this.type;
+	}
+	
+	function Cat (name) {
+		Animal.prototype.setName.call(this, name);
+		this.type = "Domestic";
+	}
+	Cat.prototype = new Animal;
+	Cat.prototype.constructor = Animal;
+	
+	function Dog(name) {
+		Animal.prototype.setName.call(this, name);
+		this.type = 'Barking Domestic';
+	}
+	
+	Dog.prototype = new Animal;
+	Dog.prototype.constructor = Animal;
+	
+	
+	
+	var c = new Cat('Name of the cat');
+	var d = new Dog('Dog Name');
+	
+	console.log(c.getName());
+	console.log(d.getName());
+	
+	</script>
+</body>
+</html>
